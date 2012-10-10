@@ -22,7 +22,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="compile-notes.txt" />
-    <Content Include="Copy of index.html" />
     <Content Include="css\app.css" />
     <Content Include="index.html" />
     <Content Include="js\app.js">
@@ -47,6 +46,10 @@
     <Content Include="js\libs\jquery.mobile.router.js" />
     <None Include="js\models\Todo.ts" />
     <Content Include="js\main.js" />
+    <None Include="js\models\MenuItem.ts" />
+    <Content Include="js\models\MenuItem.js">
+      <DependentUpon>MenuItem.ts</DependentUpon>
+    </Content>
     <Content Include="js\models\Todo.js">
       <DependentUpon>Todo.ts</DependentUpon>
     </Content>

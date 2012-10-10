@@ -8,9 +8,11 @@ declare var _: any;
 
 export class Todo extends Backbone.Model  {
     
+
     defaults(): TodoInterface {
         return {
             content: 'Default Thing to do'
+
         };
     };
 
@@ -25,7 +27,9 @@ export class Todo extends Backbone.Model  {
        }
        
        return "";
-    }
+    };
+
+       
 
 };
 

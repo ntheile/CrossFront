@@ -7,33 +7,42 @@
 /// <reference path="libs/jquery.d.ts"/>
 /// <reference path="libs/backbone.d.ts"/>
 
-//import your classes
-import Model = module("models/Todo");
-
 //declare a variable representing underscore so this typescript file will compile without errors
 declare var _: any;
-declare var require: any;
 declare var App: any;
 declare var $: any;
 
+//import your classes
+import Model = module("models/MenuItem");
+
 //initilize the backbone module
-var task = new Model.Todo();
+    //var menuitem = new Model.MenuItem(
+//    text : 'bing', 
+//    url : 'www.bing.com'
+//});
 
-//Get the default value for content
-console.log(task.get("content"));
+var menuitem = new Model.MenuItem({
+    text: 'bing', 
+    url: 'http://www.bing.com'
+});
 
-//Now set it to a new value
-task.set({ "content": "First task to do" });
 
-//Get the new value we just set
-console.log(task.get("content"));
+//Get the value for content
+console.log(menuitem.get('text'));
+console.log(menuitem.get('url'));
+
+//Set them to a new value
+menuitem.set({
+    text : "yahoo",
+    url : "http://www.yahoo.com"
+})
+console.log(menuitem.get('text'));
+console.log(menuitem.get('url'));
+
 
 //This simply shows that jQuery works. 
 //In Visual Studio you get intellisense since we referenced jquery.d.ts!!
 $(document).ready(function () {
     console.log("dom loaded");
 });
-
-
-
 
