@@ -1,6 +1,6 @@
 CrossFront - Cross-Platform, Front-End Glue 
 ==========================================
-##Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers
+**_Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers_**
 
 CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often.
 
