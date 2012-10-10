@@ -103,14 +103,14 @@ Here are some of my resources:
  * http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2ftodomvc%2fjs%2ftodos.ts
  * http://backbonetutorials.com/what-is-a-model/
 
-Day Two - Create tsc-compile-amd.bat
+Day 2 - The Build Script
 =====================================
 I found it a pain to maually compile each ts file to use AMD so I wrote this batch script that you can configure to run at build time.
  
- `/tsc-compile-amd.bat`
+`/TscCompile.bat`
  
 <pre>
-"TypeScript is compiling TscCopile.bat as AMD"
+"TypeScript is compiling as AMD using TscCompile.bat"
 cd D:\Websites\CrossFront\CrossFront\js
 tsc.exe app.ts --module AMD
 cd models
@@ -120,12 +120,13 @@ cd collections
 tsc.exe Menu.ts --module AMD
 </pre>
  
- To configure this to run at build time **right click project > properties > build events > pre-build event command line >  D:\Websites\CrossFront\CrossFront\TscCompile.bat
+To configure this to run at build time:
+**right click project > properties > build events > pre-build event command line >  D:\Websites\CrossFront\CrossFront\TscCompile.bat**
  
- Make sure to keep the TscCompile.bat file up to date when you add new .ts files. 
+_Make sure to keep the TscCompile.bat file up to date when you add new .ts files._
  
-Day Two and a half - The Collection
-========================
+Day 2.5 - The Collection
+====================================
 I am going to create a collection of MenuItems called Menu using `Backbone.Collection`. This collection pulls it's data from a
 RESTful Api using the `MenuItem` as its Model. Since the server api is out of scope at this time, I created an `api` folder that 
 represents a server call and returns a json object.
@@ -170,7 +171,7 @@ export class Menu extends Backbone.Collection {
 };
  ```
  
-Day Three - The View
+Day 3 - The View
 ===================
 I am going to create a Dynamic view for each page using `Backbone.View`. TODO - finish
 

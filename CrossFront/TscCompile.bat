@@ -1,4 +1,4 @@
-﻿"TypeScript is compiling TscCopile.bat as AMD"
+﻿"TypeScript is compiling as AMD using TscCompile.bat"
 cd D:\Websites\CrossFront\CrossFront\js
 tsc.exe app.ts --module AMD
 cd models
