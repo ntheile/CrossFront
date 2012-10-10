@@ -103,9 +103,76 @@ Here are some of my resources:
  * http://typescript.codeplex.com/SourceControl/changeset/view/fe3bc0bfce1f#samples%2ftodomvc%2fjs%2ftodos.ts
  * http://backbonetutorials.com/what-is-a-model/
 
-Day Two - The View
+Day Two - Create tsc-compile-amd.bat
+=====================================
+I found it a pain to maually compile each ts file to use AMD so I wrote this batch script that you can configure to run at build time.
+ 
+ `/tsc-compile-amd.bat`
+ 
+<pre>
+"TypeScript is compiling TscCopile.bat as AMD"
+cd D:\Websites\CrossFront\CrossFront\js
+tsc.exe app.ts --module AMD
+cd models
+tsc.exe MenuItem.ts --module AMD
+cd ..
+cd collections
+tsc.exe Menu.ts --module AMD
+</pre>
+ 
+ To configure this to run at build time **right click project > properties > build events > pre-build event command line >  D:\Websites\CrossFront\CrossFront\TscCompile.bat
+ 
+ Make sure to keep the TscCompile.bat file up to date when you add new .ts files. 
+ 
+Day Two and a half - The Collection
+========================
+I am going to create a collection of MenuItems called Menu using `Backbone.Collection`. This collection pulls it's data from a
+RESTful Api using the `MenuItem` as its Model. Since the server api is out of scope at this time, I created an `api` folder that 
+represents a server call and returns a json object.
+  
+`/api/Menu.html`
+<pre>
+[
+	{"text" : "github" , "url" : "http://github.com"},
+	{"text" : "jquery" , "url" : "http://jquery.com"}
+]
+</pre>
+ 
+ `js/collections/Menu.ts`
+ 
+ ```javascript
+ /* Globals - jQuery, $, Backbone, _ */
+
+/// <reference path="../libs/jquery.d.ts"/>
+/// <reference path="../libs/backbone.d.ts"/>
+
+declare var $: any;
+declare var _: any;
+
+import Model = module("../models/MenuItem");
+
+// collection of the key model 
+export class Menu extends Backbone.Collection {
+
+    model: Model.MenuItem;
+    
+    url: string;
+        
+    initialize() {
+        
+        console.log("Menu init'd");
+    }
+
+    constructor(options?: any) {
+        this.url = "/api/Menu.html";    
+        super(options);        
+    };
+};
+ ```
+ 
+Day Three - The View
 ===================
-Second I am going to create a Dynamic view for each page using `Backbone.View`. TODO - finish
+I am going to create a Dynamic view for each page using `Backbone.View`. TODO - finish
 
 `js/views/page/index.ts`
 

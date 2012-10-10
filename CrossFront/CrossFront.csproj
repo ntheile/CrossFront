@@ -21,7 +21,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="compile-notes.txt" />
+    <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
     <Content Include="index.html" />
     <Content Include="js\app.js">
@@ -30,10 +30,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="js\app.ts" />
+    <Content Include="api\Menu.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="js\libs\backbone.d.ts" />
     <Content Include="js\appstart\config.js" />
+    <None Include="js\collections\Menu.ts" />
+    <Content Include="js\collections\Menu.js">
+      <DependentUpon>Menu.ts</DependentUpon>
+    </Content>
     <Content Include="js\libs\backbone-0.5.3.js" />
     <Content Include="js\libs\cordova-2.0.0.js" />
     <Content Include="js\libs\cordova-android.js" />
@@ -55,7 +60,7 @@
     </Content>
     <Content Include="js\appstart\router.js" />
     <None Include="js\views\pages\index.ts" />
-    <TypeScriptCompile Include="js\test.ts" />
+    <None Include="js\test.ts" />
     <Content Include="js\test.js">
       <DependentUpon>test.ts</DependentUpon>
     </Content>
@@ -85,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
-    <Folder Include="js\collections\" />
     <Folder Include="js\utils\" />
     <Folder Include="js\views\partials\" />
     <Folder Include="templates\pages\" />
@@ -125,4 +129,7 @@
   <Target Name="BeforeBuild">
     <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>D:\Websites\CrossFront\CrossFront\TscCompile.bat</PreBuildEvent>
+  </PropertyGroup>
 </Project>

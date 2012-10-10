@@ -21,6 +21,7 @@ declare module Backbone {
         last(n: number): any[];
         filter(f: (elem: any) => any): Collection;
         without(...values: any[]): Collection;
+        url: string;
     }
     export class View {
         constructor (options? );

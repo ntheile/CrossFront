@@ -1,6 +1,11 @@
-define(["require", "exports", "models/MenuItem"], function(require, exports, __Model__) {
+define(["require", "exports", "models/MenuItem", "collections/Menu"], function(require, exports, __Model__, __Collection__) {
     var Model = __Model__;
 
+    var Collection = __Collection__;
+
+    $(document).ready(function () {
+        console.log("dom loaded");
+    });
     var menuitem = new Model.MenuItem({
         text: 'bing',
         url: 'http://www.bing.com'
@@ -13,8 +18,7 @@ define(["require", "exports", "models/MenuItem"], function(require, exports, __M
     });
     console.log(menuitem.get('text'));
     console.log(menuitem.get('url'));
-    $(document).ready(function () {
-        console.log("dom loaded");
-    });
+    var menu = new Collection.Menu();
+    menu.fetch();
 })
 

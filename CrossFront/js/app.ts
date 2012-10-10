@@ -14,18 +14,26 @@ declare var $: any;
 
 //import your classes
 import Model = module("models/MenuItem");
+import Collection = module("collections/Menu");
 
-//initilize the backbone module
-    //var menuitem = new Model.MenuItem(
-//    text : 'bing', 
-//    url : 'www.bing.com'
-//});
+////
+//// jQuery Test /////
+////
 
+//This simply shows that jQuery works. 
+//In Visual Studio you get intellisense since we referenced jquery.d.ts!!
+$(document).ready(function () {
+    console.log("dom loaded");
+});
+
+
+////
+//// Model Test ////
+////
 var menuitem = new Model.MenuItem({
     text: 'bing', 
     url: 'http://www.bing.com'
 });
-
 
 //Get the value for content
 console.log(menuitem.get('text'));
@@ -40,9 +48,13 @@ console.log(menuitem.get('text'));
 console.log(menuitem.get('url'));
 
 
-//This simply shows that jQuery works. 
-//In Visual Studio you get intellisense since we referenced jquery.d.ts!!
-$(document).ready(function () {
-    console.log("dom loaded");
-});
+
+////
+//// Collection Test ////
+////
+var menu = new Collection.Menu();
+menu.fetch();
+
+
+
 
