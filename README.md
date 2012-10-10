@@ -1,7 +1,12 @@
 CrossFront - Cross-Platform, Front-End Glue 
 ==========================================
+Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers
+------------------------------------------------------------------------------------------
+
+CrossFront is a work in progress...stay tuned for updated and follow this readme as a blog, as it's updated often.
 
 CrossFront uses these frameworks:
+
 	`TypeScript`
 	`Backbone`
 	`Underscore`
@@ -36,7 +41,9 @@ First I am going to create a simple `MenuItem` model representing one item in a 
 The model will be constructed of three attributes you can set `text` `url` `active` 
 and one method `toggleActive`.
 
+`js/models/Todo.ts`
 <pre>
+	```javascript
 	/* Globals - jQuery, $, Backbone, _ */
 
 	/// <reference path="../libs/jquery.d.ts"/>
@@ -97,6 +104,7 @@ and one method `toggleActive`.
 		url: string;    
 		active?: bool;
 	};
+	```
 </pre>
 
 Here are some of my resources:
@@ -110,7 +118,8 @@ Second I am going to create a Dynamic view for each page using `Backbone.View`. 
 
 `js/views/page/index.ts`
 
-<pre>	
+<pre>
+	```javascript
 	declare var $: any;
 	declare var _: any;
 	import Model = module("../../models/Todo");
@@ -132,6 +141,7 @@ Second I am going to create a Dynamic view for each page using `Backbone.View`. 
 		}
 
 	};
+	```
 </pre>
 
 
