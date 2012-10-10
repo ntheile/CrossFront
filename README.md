@@ -1,21 +1,12 @@
 CrossFront - Cross-Platform, Front-End Glue 
 ==========================================
-Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers
-------------------------------------------------------------------------------------------
+##Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers
 
-CrossFront is a work in progress...stay tuned for updated and follow this readme as a blog, as it's updated often.
+CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often.
 
-CrossFront uses these frameworks:
-
-	`TypeScript`
-	`Backbone`
-	`Underscore`
-	`Require`
-	`jQuery`
-	`jQuery Mobile`
-	`jQuery Mobile Router`
-	`Cordova (PhoneGap)`
-	`Modernizr`
+CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
+`jQuery` `jQuery Mobile` `jQuery Mobile Router` 
+`Cordova (PhoneGap)` `Modernizr`
 	
 CrossFront glues all these frameworks together in a boilerplate project to allow for Large Scale Javascript development. It allows you
 to code once and run everywhere (Desktop Browsers, Mobile Browsers, Tablet Browsers, Phones, Android, iOS ... etc). CrossFront is a great front-end solution
@@ -42,8 +33,8 @@ The model will be constructed of three attributes you can set `text` `url` `acti
 and one method `toggleActive`.
 
 `js/models/Todo.ts`
-<pre>
-	```javascript
+
+```javascript
 	/* Globals - jQuery, $, Backbone, _ */
 
 	/// <reference path="../libs/jquery.d.ts"/>
@@ -104,8 +95,8 @@ and one method `toggleActive`.
 		url: string;    
 		active?: bool;
 	};
-	```
-</pre>
+```
+
 
 Here are some of my resources:
  * http://csharperimage.jeremylikness.com/2012/10/building-backbone-applications-with.html
@@ -118,8 +109,7 @@ Second I am going to create a Dynamic view for each page using `Backbone.View`. 
 
 `js/views/page/index.ts`
 
-<pre>
-	```javascript
+```javascript
 	declare var $: any;
 	declare var _: any;
 	import Model = module("../../models/Todo");
@@ -141,8 +131,8 @@ Second I am going to create a Dynamic view for each page using `Backbone.View`. 
 		}
 
 	};
-	```
-</pre>
+```
+
 
 
 
