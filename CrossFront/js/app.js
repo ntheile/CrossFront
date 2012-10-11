@@ -1,7 +1,9 @@
-define(["require", "exports", "models/MenuItem", "collections/Menu"], function(require, exports, __Model__, __Collection__) {
+define(["require", "exports", "models/MenuItem", "collections/Menu", "views/partials/Menu"], function(require, exports, __Model__, __Collection__, __PartialView__) {
     var Model = __Model__;
 
     var Collection = __Collection__;
+
+    var PartialView = __PartialView__;
 
     $(document).ready(function () {
         console.log("dom loaded");
@@ -18,7 +20,13 @@ define(["require", "exports", "models/MenuItem", "collections/Menu"], function(r
     });
     console.log(menuitem.get('text'));
     console.log(menuitem.get('url'));
-    var menu = new Collection.Menu();
-    menu.fetch();
+    menu = new Collection.Menu();
+    menu.fetch({
+        success: function () {
+            console.log(menu.models);
+            var menuview = new PartialView.MenuView('.sidemenu', menu);
+            menuview.render();
+        }
+    });
 })
 

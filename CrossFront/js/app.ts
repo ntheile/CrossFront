@@ -15,6 +15,7 @@ declare var $: any;
 //import your classes
 import Model = module("models/MenuItem");
 import Collection = module("collections/Menu");
+import PartialView = module("views/partials/Menu");
 
 ////
 //// jQuery Test /////
@@ -52,8 +53,22 @@ console.log(menuitem.get('url'));
 ////
 //// Collection Test ////
 ////
-var menu = new Collection.Menu();
-menu.fetch();
+
+// Get a collection of menu items
+declare var menu: any;
+menu = new Collection.Menu();
+
+menu.fetch({success: function(){
+    console.log(menu.models); // => 2 (collection have been populated)
+
+    ////
+    //// Partial View Test ////
+    ////
+
+    // Fetches, Sets up and injects a side menu into the DOM for the sidemenu class
+    var menuview = new PartialView.MenuView('.sidemenu', menu);
+    menuview.render();
+}})
 
 
 

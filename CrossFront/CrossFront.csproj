@@ -60,12 +60,16 @@
     </Content>
     <Content Include="js\appstart\router.js" />
     <None Include="js\views\pages\index.ts" />
-    <None Include="js\test.ts" />
-    <Content Include="js\test.js">
+    <None Include="js\libs\test.ts" />
+    <Content Include="js\libs\test.js">
       <DependentUpon>test.ts</DependentUpon>
     </Content>
     <Content Include="js\views\pages\index.js">
       <DependentUpon>index.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="js\views\partials\Menu.ts" />
+    <Content Include="js\views\partials\Menu.js">
+      <DependentUpon>Menu.ts</DependentUpon>
     </Content>
     <Content Include="web.config" />
     <None Include="web.Release.config">
@@ -91,7 +95,6 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Folder Include="js\utils\" />
-    <Folder Include="js\views\partials\" />
     <Folder Include="templates\pages\" />
     <Folder Include="templates\partials\" />
   </ItemGroup>

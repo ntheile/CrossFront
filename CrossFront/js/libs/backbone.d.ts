@@ -35,9 +35,10 @@ declare module Backbone {
         setElement(element: HTMLElement, delegate?: bool): void;
         tagName: string;
         events: any;
-
         static extend: any;
     }
+    
+    export var sync: any;
 
 }
     

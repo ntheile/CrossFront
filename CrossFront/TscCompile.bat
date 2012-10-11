@@ -6,3 +6,6 @@ tsc.exe MenuItem.ts --module AMD
 cd ..
 cd collections
 tsc.exe Menu.ts --module AMD
+cd ..
+cd views/partials
+tsc.exe Menu.ts --module AMD

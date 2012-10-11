@@ -2,7 +2,8 @@ CrossFront - Cross-Platform, Front-End Glue
 ==========================================
 **_Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers_**
 
-CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often.
+CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
+of the source to see the progress made. To view what i did on day 1 view the source for the Day 1 commit.
 
 CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
 `jQuery` `jQuery Mobile` `jQuery Mobile Router` 
@@ -10,7 +11,8 @@ CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
 	
 CrossFront glues all these frameworks together in a boilerplate project to allow for Large Scale Javascript development. It allows you
 to code once and run everywhere (Desktop Browsers, Mobile Browsers, Tablet Browsers, Phones, Android, iOS ... etc). CrossFront is a great front-end solution
-for app development that provides good structure and organzation of code using AMD and MVC design patterns. It is the ideal compliment to a RESTful backend.
+for app development that provides good structure and organzation of code using AMD and MVC design patterns. It is the ideal compliment to a RESTful backend 
+and is very efficiant passing lightweight ajax json requests. This is good for a mobile application when every bit of bandwidth counts!
 
 Here are the steps to get this project working.
 
@@ -32,69 +34,69 @@ First I am going to create a simple `MenuItem` model representing one item in a 
 The model will be constructed of three attributes you can set `text` `url` `active` 
 and one method `toggleActive`.
 
-`js/models/Todo.ts`
+`js/models/MenuItem.ts`
 
 ```javascript
-	/* Globals - jQuery, $, Backbone, _ */
+/* Globals - jQuery, $, Backbone, _ */
 
-	/// <reference path="../libs/jquery.d.ts"/>
-	/// <reference path="../libs/backbone.d.ts"/>
+/// <reference path="../libs/jquery.d.ts"/>
+/// <reference path="../libs/backbone.d.ts"/>
 
-	declare var $: any;
-	declare var _: any;
+declare var $: any;
+declare var _: any;
 
-	// Our basic MenuItem model has text, url, and acitve params
-	export class MenuItem extends Backbone.Model {
+// Our basic MenuItem model has text, url, and acitve params
+export class MenuItem extends Backbone.Model {
 
-		// Defaults
-		defaults() : MenuItemInterface {
-			return {
-				text: 'google',
-				url: 'www.google.com',
-				active: false
-			};
-		}
-		
-		// Initialize
-		initialize() {
-			console.log("MenuItem Model init'ed.");
-			
-		}
-		
-		// Validate
-		validate(attrs: MenuItemInterface) {
-		   
-		   if (_.isEmpty(attrs.text)) {
-				return "text is required.";
-		   }
-		   if (_.isEmpty(attrs.url)) {
-				return "url is required.";
-		   }
-		   
-		   return "";
-		}
+    // Defaults
+    defaults() : MenuItemInterface {
+        return {
+            text: 'google',
+            url: 'www.google.com',
+            active: false
+        };
+    }
+    
+    // Initialize
+    initialize() {
+        console.log("MenuItem Model init'ed.");
+        
+    }
+    
+    // Validate
+    validate(attrs: MenuItemInterface) {
+       
+       if (_.isEmpty(attrs.text)) {
+            return "text is required.";
+       }
+       if (_.isEmpty(attrs.url)) {
+            return "url is required.";
+       }
+       
+       return "";
+    }
 
-		// Methods
-		// Toggle the `active` state of this MenuItem.
-	   toggleActive() {
-		   var active = this.get('active');
+    // Methods
+    // Toggle the `active` state of this MenuItem.
+   toggleActive() {
+       var active = this.get('active');
 
-		   if (active == true) {
-			   //change ui to highlighted
-		   }
-		   else {
-			   //change ui to no not highlighted
-		   }
-	   }   
+       if (active == true) {
+           //change ui to highlighted
+       }
+       else {
+           //change ui to no not highlighted
+       }
+   }   
 
-	};
+};
 
-	//put all the default values here, it will make intellisense work nicely and stuff will be stored nicely too
-	interface MenuItemInterface {
-		text: string; 
-		url: string;    
-		active?: bool;
-	};
+//put all the default values here, it will make intellisense work nicely and stuff will be stored nicely too
+interface MenuItemInterface {
+    text: string; 
+    url: string;    
+    active?: bool;
+};
 ```
 
 
@@ -140,7 +142,6 @@ represents a server call and returns a json object.
 </pre>
  
  `js/collections/Menu.ts`
- 
  ```javascript
  /* Globals - jQuery, $, Backbone, _ */
 
@@ -152,53 +153,80 @@ declare var _: any;
 
 import Model = module("../models/MenuItem");
 
-// collection of the key model 
+// collection of the MenuItem model 
 export class Menu extends Backbone.Collection {
-
+    
     model: Model.MenuItem;
     
     url: string;
         
     initialize() {
-        
         console.log("Menu init'd");
     }
 
+    // You can pass anything in when this is new'd up 
     constructor(options?: any) {
+        // This code runs when you create a new instance of Menu
         this.url = "/api/Menu.html";    
-        super(options);        
+        super(options);  
     };
 };
  ```
  
 Day 3 - The View
 ===================
-I am going to create a Dynamic view for each page using `Backbone.View`. TODO - finish
+I am going to create a partial view using `Backbone.View`. The goal of the Menu view is to display a simple menu of links.
+This view is detachable and widget-like and can be used on serveral different pages in my application, therefore I am going to put it in the `partials` folder.
 
-`js/views/page/index.ts`
+`js/views/page/partials/Menu.ts`
 
 ```javascript
-	declare var $: any;
-	declare var _: any;
-	import Model = module("../../models/Todo");
+/* Globals - jQuery, $, Backbone, _ */
+/// <reference path="../../libs/jquery.d.ts"/>
+/// <reference path="../../libs/backbone.d.ts"/>
+declare var _: any;
+declare var App: any;
+declare var $: any;
+declare var coll: any;
+import Collection = module("../../collections/Menu");
 
-	// simple view in the grid list of a contact
-	export class IndexView extends Backbone.View {
+// simple partial view for the Menu widget
+export class MenuView extends Backbone.View {
 
-		model: Model.Todo;
+    collection: Collection.Menu;
 
-		$el: HTMLElement;   
+    initialize() {
+        console.log("Menu partial view init.");
+    };
+         
+    render() {
+       
 
-		initialize() {
-			var me = this;
-			console.log("Index view init.");
-		};
-			 
-		render() {
-			console.log("rendered the index view");
-		}
+        $(this.$el).html('<b>hello from the view</b>');
+        
+        coll = this.collection;
+        var strContent;
+        $.each(coll.models, function (i, model) {
+            
+            console.log(model.get('text') + " : " + model.get('url'));
 
-	};
+        });
+
+        $(this.$el).html(strContent);
+        
+        return this;
+    }
+
+    // Require params to be passed in when an instance of this is created (aka new'd up)
+    // Required: $el, collection
+    constructor ($el: string, collection: any, options?: any) {
+        // run this code when it's new'd up
+        super();
+        this.$el = $el;
+        this.collection = collection
+    }
+
+};
 ```
 
 
