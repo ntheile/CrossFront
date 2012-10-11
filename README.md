@@ -2,6 +2,8 @@ CrossFront - Cross-Platform, Front-End Glue
 ==========================================
 **_Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers_**
 
+![logo](http://www.applicoinc.com/wp-content/uploads/2012/02/cross-platform-mobile-development1.png)
+
 CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
 of the source to see the progress made. To view what i did on day 1 view the source for the Day 1 commit.
 
@@ -19,7 +21,7 @@ Here are the steps to get this project working.
 1. Download Visual Studio 2012 (I downloaded the premium release version, not sure if these instruction will work with express, RC , or Beta. Let me know if it does!)
 2. Install the visual studio add-in for TypeScript here: http://www.microsoft.com/en-us/download/details.aspx?id=34790
 3. If your using git then clone my project: git clone https://github.com/ntheile/CrossFront-Simple.git
-4. *Note:  I had to turn off VS2012 from compiling my code because I needed to to compile as ADM. To do this, Right click the .ts file > goto properties > build action > change to "none"
+4. *Note:  I had to turn off VS2012 from compiling my code because I needed to to compile as AMD (the TypeScipt compiler adds the require function with this switch turned on). To do this, Right click the .ts file > goto properties > build action > change to "none"
 5. Now compile each manually using the commands in compile-notes.txt. Example> tsc app.ts --module AMD
 6. *Hint: Run the commands from the Package Manager Console in Visual Studio to avoid having to switch out to a DOS prompt
 
@@ -229,6 +231,15 @@ export class MenuView extends Backbone.View {
 };
 ```
 
+Day 4 - The Template
+=====================
+The Menu view we created does not look very good, in fact it only outputs a console message. To avoid having to write HTML in javascript we will use an
+underscore.js `template` for this Widget.
 
+`/templates/partials/Menu.ts`
+
+```html
+
+```
 
 
