@@ -4,14 +4,16 @@ CrossFront - Cross-Platform, Front-End Glue
 
 ![logo](http://www.applicoinc.com/wp-content/uploads/2012/02/cross-platform-mobile-development1.png)
 
-CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
-of the source to see the progress made. To view what i did on day 1 view the source for the Day 1 commit.
+_CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
+of the source to see the progress made. To view what I did on day 1, view the source for the Day 1 commit._
 
+What is CrossFront?
+===================
 CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
 `jQuery` `jQuery Mobile` `jQuery Mobile Router` 
 `Cordova (PhoneGap)` `Modernizr`
 	
-CrossFront glues all these frameworks together in a boilerplate project to allow for Large Scale Javascript development. It allows you
+**CrossFront glues all these frameworks together in a boilerplate project to allow for Large Scale, Cross Platform Javascript development.** It allows you
 to code once and run everywhere (Desktop Browsers, Mobile Browsers, Tablet Browsers, Phones, Android, iOS ... etc). CrossFront is a great front-end solution
 for app development that provides good structure and organzation of code using AMD and MVC design patterns. It is the ideal compliment to a RESTful backend 
 and is very efficiant passing lightweight ajax json requests. This is good for a mobile application when every bit of bandwidth counts!
@@ -239,7 +241,17 @@ underscore.js `template` for this Widget.
 `/templates/partials/Menu.ts`
 
 ```html
-
+TODO - Finish
+<ul class="navmenu" data-role="listview">
+    <li><a href="<%=url%>"><%=text%></a></li>
+</ul>
 ```
 
+TODO - Look at http://coenraets.org/blog/2012/01/backbone-js-lessons-learned-and-improved-sample-app/ 
 
+Upcoming Topics and Code
+===============
+* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into Lumbar http://walmartlabs.github.com/lumbar/ 
+* Integrate with PhoneGap
+* Build and deploy to an Android Phone
+* Use native capabilties (GPS)
