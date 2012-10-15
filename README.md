@@ -236,10 +236,10 @@ export class MenuView extends Backbone.View {
 Day 4 - The Template (and revised view)
 =====================
 The Menu view we created does not look very good, in fact it only outputs a console message. To avoid having to write HTML in javascript we will use an
-underscore.js `template` for this Widget, as well as an html file to put the HTML in.
+underscore.js `template` for this Widget.
 
-The HTML template is kept loaded using underscore and contains a loop that iterated through each model and writes a new `<li>` element with the JSON data. See these for 
-more details on this:
+The HTML template is loaded using underscore and contains a loop that iterates through each model and writes a new `<li>` element for each one. See this post for 
+more details on how this works:
 * https://github.com/addyosmani/backbone-fundamentals/blob/master/practicals/modular-mobile-app/app/views/photoList.js
 * https://github.com/addyosmani/backbone-fundamentals/blob/master/practicals/modular-mobile-app/app/templates/photoview.html
 
@@ -260,7 +260,7 @@ Next we need to re-write the view to use this template.
 
 `/js/view/partials/menu.ts`
 
-```typescript
+```javascript
 /* Globals - jQuery, $, Backbone, _ */
 /// <reference path="../../libs/jquery.d.ts"/>
 /// <reference path="../../libs/backbone.d.ts"/>
@@ -322,12 +322,14 @@ export class MenuView extends Backbone.View {
 }
 ```
 
-Now we have to call this in the app. First we get the collection from the server, on success, we create the menu widget.
+Now we have to call this in the app. First we get the collection from the server, then on success we create the menu widget.
 
 `js/app/ts`
 
-```typescript
+```javascript
+
 ...
+
 ////
 //// Collection Test ////
 ////
@@ -348,15 +350,13 @@ menu.fetch({success: function(){
 }})
 ```
 
-Now we have an easy way to fetch a menu widget, we can place this widget easily on any page of the site. It's also very easy to modify the HTML style of this widget since it's stored in 
-it's own separate html file
+Now we have an easy way to fetch a menu widget, we can place this widget easily on any page in the site. It's also very easy to modify the HTML style of this widget since it's stored in 
+its own separate html file
 
-
-TODO - Look at http://coenraets.org/blog/2012/01/backbone-js-lessons-learned-and-improved-sample-app/ 
 
 Upcoming Topics and Code
 ===============
-* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into Lumbar http://walmartlabs.github.com/lumbar/ 
+* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into a device detector/loader, such as Lumbar http://walmartlabs.github.com/lumbar/ 
 * Integrate with PhoneGap
 * Build and deploy to an Android Phone
 * Use native capabilties (GPS)
