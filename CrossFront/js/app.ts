@@ -18,7 +18,7 @@ import Collection = module("collections/Menu");
 import PartialView = module("views/partials/Menu");
 
 ////
-//// jQuery Test /////
+//// jQuery Test //////////////////////////////////////////////////////////////
 ////
 
 //This simply shows that jQuery works. 
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 
 ////
-//// Model Test ////
+//// Model Test ///////////////////////////////////////////////////////////////
 ////
 var menuitem = new Model.MenuItem({
     text: 'bing', 
@@ -51,7 +51,7 @@ console.log(menuitem.get('url'));
 
 
 ////
-//// Collection Test ////
+//// Collection and Partial View Test /////////////////////////////////////////////////////////
 ////
 
 // Get a collection of menu items
@@ -61,13 +61,41 @@ menu = new Collection.Menu();
 menu.fetch({success: function(){
     console.log(menu.models); // => 2 (collection have been populated)
 
-    ////
-    //// Partial View Test ////
-    ////
-
     // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
    var menuview = new PartialView.MenuView( $('.sidemenu'), menu ).render();
 }})
+
+
+////
+//// PhoneGap GPS Test ////////////////////////////////////////////////////////////////////////
+////
+
+// onSuccess Callback
+//   This method accepts a `Position` object, which contains
+//   the current GPS coordinates
+//
+var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+
 
 
 
