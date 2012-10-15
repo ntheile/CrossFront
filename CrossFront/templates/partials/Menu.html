@@ -1,3 +1,9 @@
 ﻿<ul class="navmenu" data-role="listview">
-    <li><a href="<%=url%>"><%=text%></a></li>
+    <% _.each( results, function( item, i ){ %>
+
+        <li><a href="<%= item.get('url') %>" target="_blank"><%= item.get('text') %></a></li>
+
+    <% }); %>
 </ul>
+
+

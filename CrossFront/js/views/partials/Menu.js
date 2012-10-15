@@ -7,27 +7,30 @@ define(["require", "exports"], function(require, exports) {
     
     var MenuView = (function (_super) {
         __extends(MenuView, _super);
-        function MenuView($el, collection, options) {
+        function MenuView(el, collection, options) {
                 _super.call(this);
-            this.$el = $el;
+            this.el = el;
             this.collection = collection;
         }
         MenuView.prototype.initialize = function () {
             console.log("Menu partial view init.");
         };
         MenuView.prototype.render = function () {
-            $(this.$el).html('<b>hello from the view</b>');
+            $el = this.el;
             coll = this.collection;
-            var strContent;
-            $.each(coll.models, function (i, model) {
-                console.log(model.get('text') + " : " + model.get('url'));
+            var self = require([
+                "text!../../../templates/partials/Menu.html!strip"
+            ], function (html) {
+                var compiled_template = _.template(html);
+                $el.html(compiled_template({
+                    results: coll.models
+                })).trigger('create');
+                return this;
             });
-            $(this.$el).html(strContent);
-            return this;
+            return self;
         };
         return MenuView;
     })(Backbone.View);
     exports.MenuView = MenuView;    
-    ; ;
 })
 

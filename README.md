@@ -233,19 +233,124 @@ export class MenuView extends Backbone.View {
 };
 ```
 
-Day 4 - The Template
+Day 4 - The Template (and revised view)
 =====================
 The Menu view we created does not look very good, in fact it only outputs a console message. To avoid having to write HTML in javascript we will use an
-underscore.js `template` for this Widget.
+underscore.js `template` for this Widget, as well as an html file to put the HTML in.
 
-`/templates/partials/Menu.ts`
+The HTML template is kept loaded using underscore and contains a loop that iterated through each model and writes a new `<li>` element with the JSON data. See these for 
+more details on this:
+* https://github.com/addyosmani/backbone-fundamentals/blob/master/practicals/modular-mobile-app/app/views/photoList.js
+* https://github.com/addyosmani/backbone-fundamentals/blob/master/practicals/modular-mobile-app/app/templates/photoview.html
+
+`/templates/partials/Menu.html`
 
 ```html
-TODO - Finish
 <ul class="navmenu" data-role="listview">
-    <li><a href="<%=url%>"><%=text%></a></li>
+    <% _.each( results, function( item, i ){ %>
+
+        <li><a href="<%= item.get('url') %>" target="_blank"><%= item.get('text') %></a></li>
+
+    <% }); %>
 </ul>
 ```
+
+
+Next we need to re-write the view to use this template.
+
+`/js/view/partials/menu.ts`
+
+```typescript
+/* Globals - jQuery, $, Backbone, _ */
+/// <reference path="../../libs/jquery.d.ts"/>
+/// <reference path="../../libs/backbone.d.ts"/>
+declare var _: any;
+declare var App: any;
+declare var $: any;
+declare var coll: any;
+declare var $el: any;
+declare var require: any;
+declare var tmplHTML: any;
+import Collection = module("../../collections/Menu");
+
+
+// simple partial view for the Menu widget
+export class MenuView extends Backbone.View {
+
+    collection: Collection.Menu;
+
+    initialize() {
+        console.log("Menu partial view init.");
+    }
+
+    render() {
+        // assign these varaibles to the declared variables up top to make them global to this module
+        // Also so they can be used in the require() below
+        $el = this.el;
+        coll = this.collection;
+ 
+        //grab the template and inject the json data into the DOM element, pass back to self variable so we can return it.
+        var self = require(["text!../../../templates/partials/Menu.html!strip" ],
+            function(html) {               
+                var compiled_template = _.template(html);
+                
+                $el.html( 
+                    compiled_template({ 
+                        results: coll.models 
+                    }) 
+                ).trigger('create');
+
+                return this; 
+            }
+        )
+
+        //return self for chainable calls, like .render().el
+        return self;
+         
+    }
+    
+
+    // Require params to be passed in when an instance of this is created (aka new'd up)
+    // Required: el, collection
+    constructor (el: HTMLElement, collection: any, options?: any) {
+        // run this code when it's new'd up
+        super();
+        this.el = el;
+        this.collection = collection
+    }
+
+}
+```
+
+Now we have to call this in the app. First we get the collection from the server, on success, we create the menu widget.
+
+`js/app/ts`
+
+```typescript
+...
+////
+//// Collection Test ////
+////
+
+// Get a collection of menu items
+declare var menu: any;
+menu = new Collection.Menu();
+
+menu.fetch({success: function(){
+    console.log(menu.models); // => 2 (collection have been populated)
+
+    ////
+    //// Partial View Test ////
+    ////
+
+    // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
+   var menuview = new PartialView.MenuView( $('.sidemenu'), menu ).render();
+}})
+```
+
+Now we have an easy way to fetch a menu widget, we can place this widget easily on any page of the site. It's also very easy to modify the HTML style of this widget since it's stored in 
+it's own separate html file
+
 
 TODO - Look at http://coenraets.org/blog/2012/01/backbone-js-lessons-learned-and-improved-sample-app/ 
 

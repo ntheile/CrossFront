@@ -64,6 +64,10 @@
     <Content Include="js\libs\test.js">
       <DependentUpon>test.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="js\utils\Utils.ts" />
+    <Content Include="js\utils\Utils.js">
+      <DependentUpon>Utils.ts</DependentUpon>
+    </Content>
     <Content Include="js\views\pages\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
@@ -71,6 +75,7 @@
     <Content Include="js\views\partials\Menu.js">
       <DependentUpon>Menu.ts</DependentUpon>
     </Content>
+    <Content Include="templates\partials\Menu.html" />
     <Content Include="web.config" />
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
@@ -94,9 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
-    <Folder Include="js\utils\" />
     <Folder Include="templates\pages\" />
-    <Folder Include="templates\partials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

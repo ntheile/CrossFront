@@ -65,9 +65,8 @@ menu.fetch({success: function(){
     //// Partial View Test ////
     ////
 
-    // Fetches, Sets up and injects a side menu into the DOM for the sidemenu class
-    var menuview = new PartialView.MenuView('.sidemenu', menu);
-    menuview.render();
+    // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
+   var menuview = new PartialView.MenuView( $('.sidemenu'), menu ).render();
 }})
 
 

@@ -24,8 +24,7 @@ define(["require", "exports", "models/MenuItem", "collections/Menu", "views/part
     menu.fetch({
         success: function () {
             console.log(menu.models);
-            var menuview = new PartialView.MenuView('.sidemenu', menu);
-            menuview.render();
+            var menuview = new PartialView.MenuView($('.sidemenu'), menu).render();
         }
     });
 })

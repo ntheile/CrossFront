@@ -36,6 +36,7 @@ declare module Backbone {
         tagName: string;
         events: any;
         static extend: any;
+        template: any;
     }
     
     export var sync: any;
