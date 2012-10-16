@@ -24,14 +24,16 @@ export class MenuView extends Backbone.View {
 
         // assign these varaibles to the declared variables up top to make them global to this module
         // Also so they can be used in the require() below
+
         $el = this.el;
         coll = this.collection;
  
         //grab the template and inject the json data into the DOM element, pass back to self variable so we can return it.
-        var self = require(["text!../../../templates/partials/Menu.html!strip" ],
+        var tmpl = require(["text!../../../templates/partials/Menu.html!strip" ],
             function(html) {               
+                                
                 var compiled_template = _.template(html);
-                
+
                 $el.html( 
                     compiled_template({ 
                         results: coll.models 
@@ -39,11 +41,12 @@ export class MenuView extends Backbone.View {
                 ).trigger('create');
 
                 return this; 
+
             }
         )
 
-        //return self for chainable calls, like .render().el
-        return self;
+        //return tmpl for chainable calls, like .render().el
+        return tmpl;
          
     }
     

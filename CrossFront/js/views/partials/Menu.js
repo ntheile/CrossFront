@@ -18,7 +18,7 @@ define(["require", "exports"], function(require, exports) {
         MenuView.prototype.render = function () {
             $el = this.el;
             coll = this.collection;
-            var self = require([
+            var tmpl = require([
                 "text!../../../templates/partials/Menu.html!strip"
             ], function (html) {
                 var compiled_template = _.template(html);
@@ -27,7 +27,7 @@ define(["require", "exports"], function(require, exports) {
                 })).trigger('create');
                 return this;
             });
-            return self;
+            return tmpl;
         };
         return MenuView;
     })(Backbone.View);

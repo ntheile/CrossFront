@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
+    <Content Include="images\CrossFrontLogo.png" />
     <Content Include="index.html" />
     <Content Include="js\app.js">
       <DependentUpon>app.ts</DependentUpon>
@@ -98,7 +99,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="images\" />
     <Folder Include="templates\pages\" />
   </ItemGroup>
   <PropertyGroup>

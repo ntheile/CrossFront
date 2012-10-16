@@ -394,10 +394,17 @@ function onError(error) {
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
 ```
 
+Day 6 - New Logo
+===================
+
+I created a new logo for the project(see the top of the readme). It's a "C" with a sideways crown pointing to all the different platforms CrossFront can suppport. 
+
 
 Upcoming Topics and Code
 ===============
-* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into a device detector/loader, such as Lumbar http://walmartlabs.github.com/lumbar/ 
+* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into a device detector/loader, such as Lumbar http://walmartlabs.github.com/lumbar/ ...proly use http://blog.squirro.com/post/26967754862/writing-a-responsive-application-with-backbone-js
 * Integrate with PhoneGap
 * Build and deploy to an Android Phone
 * Use native capabilties (GPS)
+* Set up routers like in this project https://github.com/jcreamer898/RequireJS-Backbone-Starter/blob/master/js/routers/home.js 
+* Look into r.js to minify modular code into a gzipped minified single file
