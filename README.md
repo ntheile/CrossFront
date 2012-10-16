@@ -2,7 +2,7 @@ CrossFront - Cross-Platform, Front-End Glue
 ==========================================
 **_Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers_**
 
-![logo](http://www.applicoinc.com/wp-content/uploads/2012/02/cross-platform-mobile-development1.png)
+![logo](https://raw.github.com/ntheile/CrossFront/master/CrossFront/images/CrossFrontLogo.png)
 
 _CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
 of the source to see the progress made. To view what I did on day 1, view the source for the Day 1 commit._
