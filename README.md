@@ -7,6 +7,8 @@ CrossFront - Cross-Platform, Front-End Glue
 _CrossFront is a work in progress...stay tuned for updates. Follow this readme as a blog, as it's updated often. You can view different version 
 of the source to see the progress made. To view what I did on day 1, view the source for the Day 1 commit._
 
+View a demo CrossFront app here http://crossfront.apphb.com/
+
 What is CrossFront?
 ===================
 CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
@@ -589,6 +591,24 @@ This is code I use to start the router.
 
 A feature that our main page will include is paging `/index.html?paging=30`, this will demonstrate that we can use query string and hashes with JQM and when the link is bookmarked and revisted the jqmr will trigger the 
 right events to get the page to it's desired state.
+
+
+
+Day 9 - Deploy to AppHarbor
+============================
+
+Appharbor is a great free hosting service. To get my app to deploy to appharbor I had jump through a few hoops.
+
+1. Change all .ts file to not use the automatic TypeScript compiler, change to not compile by right clicking the file and going to properties.
+2. Comment a line of code in the CrossFront.csproj 
+```
+<Target Name="BeforeBuild">
+   <!--<Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />-->
+</Target>
+```
+3. After that I simply logged onto AppHarbor, created a new project and hooked it into this github repo.
+
+You can view this repo here `http://crossfront.apphb.com/`
 
 
 Upcoming Topics and Code
