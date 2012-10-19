@@ -35,7 +35,7 @@
     <Content Include="api\Menu.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="js\libs\backbone.d.ts" />
+    <None Include="js\libs\backbone.d.ts" />
     <Content Include="js\appstart\config.js" />
     <None Include="js\collections\Menu.ts" />
     <Content Include="js\collections\Menu.js">
@@ -45,7 +45,7 @@
     <Content Include="js\libs\cordova-2.0.0.js" />
     <Content Include="js\libs\cordova-android.js" />
     <Content Include="js\libs\cordova-iphone.js" />
-    <Content Include="js\libs\jquery.d.ts" />
+    <None Include="js\libs\jquery.d.ts" />
     <Content Include="js\libs\jquery.mobile.routerlite.js" />
     <Content Include="js\libs\modernizr.js" />
     <Content Include="js\libs\require.js" />
@@ -67,15 +67,15 @@
     <Content Include="js\libs\test.js">
       <DependentUpon>test.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="js\utils\Utils.ts" />
+    <None Include="js\utils\Utils.ts" />
     <Content Include="js\utils\Utils.js">
       <DependentUpon>Utils.ts</DependentUpon>
     </Content>
     <Content Include="js\views\pages\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="js\views\partials\Menu.ts" />
-    <TypeScriptCompile Include="js\views\pages\One.ts" />
+    <None Include="js\views\partials\Menu.ts" />
+    <None Include="js\views\pages\One.ts" />
     <Content Include="js\views\pages\One.js">
       <DependentUpon>One.ts</DependentUpon>
     </Content>
