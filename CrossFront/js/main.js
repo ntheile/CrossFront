@@ -8,7 +8,7 @@
 //1. media queries for desktop and mobile views
 
 require.config({
-    urlArgs: "bust=v6",
+    urlArgs: "bust=v33",
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
@@ -50,10 +50,11 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
         global.Backbone = global.Backbone || Backbone;
         console.log('core libs loaded');
 
-        //config jqm b4 it loads
-        //look into using the cordova boilerplate template from jquerymobile.com... slides dont look good on android
+
+        //wait for Mobile jquery mobile init'd and loaded Callback
         $(document).bind("mobileinit", function () {
 
+            //config transitions
             if (navigator.userAgent.indexOf("Android") != -1) {
                 $.mobile.defaultPageTransition = 'fade';
             }
@@ -62,24 +63,61 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
             }
 
         });
-        
-        //Now that those are loaded, load these scripts
-        require(['jqmr', 'jqm', 'text'],
-            function (jqmr, $$, text) {
+
+        //load jquery mobile
+        require(['jqm', 'jqmr', 'text'],
+            function ($$,jqmr, text) {
                 console.log("start your engines");
-                
+
                 // in order to prevent viewing unstyled content before all out libraries are loaded
                 $('#loaded').show();
                 $('#preLoad').hide();
 
-                //start your router
-                require(['appstart/router']);
-                console.log('router started');
+                ///
+                /// Start Router ///
+                ///
 
-                //now that all your prerequisites are loaded...start your app
-                require(['app']);
-                console.log('app started');
+                // IE Hack for jquery mobile router bookmark deep linking to work, for example /index.html#one?q=1
+                if ($.browser.msie) {
+                    //start your apps router
+                    require(['router'], function (Router) {
 
-        });
+                        Router.init();
+
+                        if ('' !== window.location.hash && '#' !== window.location.hash) {
+                            //hash found
+                            var hash = window.location.hash;
+                            //is there a query string in there ?
+                            if ((hash.indexOf("?") !== -1)) {
+                                hash = hash + "?bookmark";
+                            }
+                            else {
+                                hash = hash + "?bookmark";
+                            }
+
+                            $.mobile.changePage(hash);
+                        }
+
+
+
+                        //now that all your prerequisites are loaded...start your app
+                        require(['app']);
+                        console.log('app started');
+                    });
+                }
+                else { //start app normally for other browsers
+                    require(['router'],function (Router) {
+                        Router.init();
+                    });
+                    require(['app']);
+                    console.log('app started');
+
+                }
+
+               
+                
+                });
+        
+        
 
     });

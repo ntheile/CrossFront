@@ -234,6 +234,9 @@ export class MenuView extends Backbone.View {
 };
 ```
 
+Resources:
+http://coenraets.org/blog/2012/01/backbone-js-lessons-learned-and-improved-sample-app/ 
+
 Day 4 - The Template (and revised view)
 =====================
 The Menu view we created does not look very good, in fact it only outputs a console message. To avoid having to write HTML in javascript we will use an
@@ -398,6 +401,194 @@ Day 6 - New Logo
 ===================
 
 I created a new logo for the project(see the top of the readme). It's a "C" with a sideways crown pointing to all the different platforms CrossFront can suppport. 
+
+Day 7 - The Router
+===================
+
+Most front end interactive apps are single page applications. You need a way to keep state and history, such as clicking a link and moving to step 2. 
+To achieve this I chose to use `jQuery Mobile Router` since I am using jQuery Mobile for much of the UI, plugins and event handling. 
+It is also stated that this will be the supported router for the platform. Most of the work will be done on the `/index.html#index` 
+page (aka /index.html or aka the web root / )  with partial widgets being loaded into the DOM dynamically (/index.html#index?widget=foo), occationally
+we will need to load separate pages /index.html#one. If this is the case, then the skeleton of the page must be already coded in HTML on 
+the main index.html page for the `jQuery Mobile Router` to listen for and trigger an event. 
+
+**Skeleton Example:**
+
+`/index.html`
+
+```html
+<div id="one" data-role="page" data-add-back-btn="true" >
+
+    <div id="head" data-role="header" data-tap-toggle="false" data-position="fixed">
+        <h1>Page One</h1>
+    </div>
+
+    <div id="content" data-role="content">
+        <h2 style="color:red">error on page , this is static content that should be replaced when the view is rendered</h2>
+    </div>
+
+    <div id="footer" data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <h4>Page One Footer</h4>
+    </div>
+      
+</div>
+```
+
+This may sound confusing, and it is! Experiment a bit with it and you see SPA's are still very new and takes alot of playing around to get it just right.
+
+We want our router to work with the following types of page requests:
+
+* /index.hmtl#one
+* /index.hmtl#one?q=1
+* /index.hmtl#two
+
+This allows for deep-linking and bookmarking to work. To make this work with `jquery mobile router` I had to implement calling the router in two different ways, one for
+IE and one for the other browsers. I am not quite sure why the browsers handle these routing events differently but this code is a workaround.
+
+`/js/router.js`
+```javascript
+define([
+      'jquery',
+      'underscore',
+      'backbone'
+    ], function ($, _, Backbone) {
+
+        App.IndexPage = function (type, match, ui) {
+
+            //var indexPage = new indexView();
+            console.log("-----------Index Page fired-------");
+
+        };
+
+        App.PageOne = function (type, match, ui) {
+
+            //var onePage = new pageOneView();
+
+
+            console.log("-----------one page fired------------");
+
+            //get the Page One View and Render it.
+            require(['views/pages/One'], function (__PageView__) {
+                var PageView = __PageView__;
+
+                var PageOne = new PageView.PageOne($('#one :jqmData(role="content")')).render();
+
+            });
+
+        };
+
+        App.PageTwo = function (type, match, ui, page) {
+
+            //var pageTwo = new pageTwoView();
+
+            console.log("--------------page 2 called----------------");
+
+        };
+
+        App.PageInit = function (type, match, ui, page) {
+            console.log("This page (" + $(page).jqmData("url") + ") has been initialized");
+
+            //jquery mobile router bookmark deep linking hack for non-IE browsers (/index.html#one?q=1)
+            if ('' !== window.location.hash && '#' !== window.location.hash && !$.browser.msie) {
+                //hash found
+                var hash = window.location.hash;
+                //is there a query string in there ?
+                if ((hash.indexOf("?") !== -1)) {
+                    hash = hash + "?bookmark";
+                }
+                else {
+                    hash = hash + "?bookmark";
+                }
+
+                $.mobile.changePage(hash);
+            }
+
+        };
+
+        var init = function () {
+            App.Router = new $.mobile.Router(
+                {
+                    "#index": {
+                        handler: App.IndexPage, events: "bs"
+                    },
+                    "#one(?:[?](.*))?": {
+                        handler: App.PageOne, events: "bs"
+                    },
+                    "#two": {
+                        handler: App.PageTwo, events: "bs"
+                    },
+                    ".": { //this code runs when any new page is initialized into jquery mobile
+                        handler: App.PageInit, events: "i"
+                    }
+                }
+            );
+
+
+        };
+
+        return {
+            init: init
+        };
+    });
+
+```
+
+This is code I use to start the router.
+
+`/js/main.js`
+```javascript
+
+...
+
+///
+/// Start Router ///
+///
+
+	// IE Hack for jquery mobile router bookmark deep linking to work, for example /index.html#one?q=1
+	if ($.browser.msie) {
+		//start your apps router
+		require(['router'], function (Router) {
+
+			Router.init();
+
+			if ('' !== window.location.hash && '#' !== window.location.hash) {
+				//hash found
+				var hash = window.location.hash;
+				//is there a query string in there ?
+				if ((hash.indexOf("?") !== -1)) {
+					hash = hash + "?bookmark";
+				}
+				else {
+					hash = hash + "?bookmark";
+				}
+
+				$.mobile.changePage(hash);
+			}
+
+
+
+			//now that all your prerequisites are loaded...start your app
+			require(['app']);
+			console.log('app started');
+		});
+	}
+	else { //start app normally for other browsers
+		require(['router'],function (Router) {
+			Router.init();
+		});
+		require(['app']);
+		console.log('app started');
+
+	}
+          
+});
+```
+
+
+
+
+A feature that our main page will include is paging `/index.html?paging=30`, this will demonstrate that we can use query string and hashes with JQM and when the link is bookmarked and revisted the jqmr will trigger the 
+right events to get the page to it's desired state.
 
 
 Upcoming Topics and Code

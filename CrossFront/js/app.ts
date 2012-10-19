@@ -17,6 +17,7 @@ import Model = module("models/MenuItem");
 import Collection = module("collections/Menu");
 import PartialView = module("views/partials/Menu");
 
+
 ////
 //// jQuery Test //////////////////////////////////////////////////////////////
 ////
@@ -62,7 +63,7 @@ menu.fetch({success: function(){
     console.log(menu.models); // => 2 (collection have been populated)
 
     // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
-   var menuview = new PartialView.MenuView( $('.sidemenu'), menu ).render();
+   var menuview = new PartialView.MenuView(  $('.sidemenu'), menu  ).render();
 }})
 
 
@@ -75,7 +76,7 @@ menu.fetch({success: function(){
 //   the current GPS coordinates
 //
 var onSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
+    console.log('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
           'Accuracy: '          + position.coords.accuracy          + '\n' +
@@ -88,7 +89,7 @@ var onSuccess = function(position) {
 // onError Callback receives a PositionError object
 //
 function onError(error) {
-    alert('code: '    + error.code    + '\n' +
+    console.log('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
 

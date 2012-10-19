@@ -21,6 +21,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="js\libs\jquery.mobile.router-old.js" />
     <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
     <Content Include="images\CrossFrontLogo.png" />
@@ -45,6 +46,7 @@
     <Content Include="js\libs\cordova-android.js" />
     <Content Include="js\libs\cordova-iphone.js" />
     <Content Include="js\libs\jquery.d.ts" />
+    <Content Include="js\libs\jquery.mobile.routerlite.js" />
     <Content Include="js\libs\modernizr.js" />
     <Content Include="js\libs\require.js" />
     <Content Include="js\libs\text.js" />
@@ -59,7 +61,7 @@
     <Content Include="js\models\Todo.js">
       <DependentUpon>Todo.ts</DependentUpon>
     </Content>
-    <Content Include="js\appstart\router.js" />
+    <Content Include="js\router.js" />
     <None Include="js\views\pages\index.ts" />
     <None Include="js\libs\test.ts" />
     <Content Include="js\libs\test.js">
@@ -73,10 +75,17 @@
       <DependentUpon>index.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="js\views\partials\Menu.ts" />
+    <TypeScriptCompile Include="js\views\pages\One.ts" />
+    <Content Include="js\views\pages\One.js">
+      <DependentUpon>One.ts</DependentUpon>
+    </Content>
     <Content Include="js\views\partials\Menu.js">
       <DependentUpon>Menu.ts</DependentUpon>
     </Content>
+    <Content Include="templates\pages\Index.html" />
+    <Content Include="templates\pages\One.html" />
     <Content Include="templates\partials\Menu.html" />
+    <Content Include="tst.js" />
     <Content Include="web.config" />
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
@@ -98,9 +107,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="templates\pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

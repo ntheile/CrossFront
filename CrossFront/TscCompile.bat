@@ -9,3 +9,6 @@ tsc.exe Menu.ts --module AMD
 cd ..
 cd views/partials
 tsc.exe Menu.ts --module AMD
+cd ..
+cd pages
+tsc.exe One.ts --module AMD
