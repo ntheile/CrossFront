@@ -20,6 +20,16 @@ to code once and run everywhere (Desktop Browsers, Mobile Browsers, Tablet Brows
 for app development that provides good structure and organzation of code using AMD and MVC design patterns. It is the ideal compliment to a RESTful backend 
 and is very efficiant passing lightweight ajax json requests. This is good for a mobile application when every bit of bandwidth counts!
 
+Desktop View
+=============
+
+![logo](https://raw.github.com/ntheile/CrossFront/master/CrossFront/images/CrossFrontDesktop.png)
+
+Mobile View
+===========
+
+![logo](https://raw.github.com/ntheile/CrossFront/master/CrossFront/images/CrossFrontMobile.png)
+
 Here are the steps to get this project working.
 
 1. Download Visual Studio 2012 (I downloaded the premium release version, not sure if these instruction will work with express, RC , or Beta. Let me know if it does!)
