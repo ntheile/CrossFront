@@ -76,16 +76,19 @@ menu.fetch({success: function(){
 //   the current GPS coordinates
 //
 var onSuccess = function(position) {
-    var strgps = 'Latitude: '          + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n' +
-          'Altitude: '          + position.coords.altitude          + '\n' +
-          'Accuracy: '          + position.coords.accuracy          + '\n' +
-          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-          'Heading: '           + position.coords.heading           + '\n' +
-          'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n';
 
-    $('.gps-data').html(strgps);
+    var strGPS = '<img src="https://maps.googleapis.com/maps/api/staticmap?center=43.6177408, -84.2012254&amp;zoom=14&amp;size=288x200&amp;markers=color:blue%7Clabel:X%7C' + position.coords.latitude + ' ' + position.coords.longitude +'&amp;sensor=false" height="200" width="288">';
+
+    var strgps = 'Latitude: '    + position.coords.latitude   + '<br/>' +
+          'Longitude: '         + position.coords.longitude         + '<br/>' +
+          'Altitude: '          + position.coords.altitude          + '<br/>' +
+          'Accuracy: '          + position.coords.accuracy          + '<br/>' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '<br/>' +
+          'Heading: '           + position.coords.heading           + '<br/>' +
+          'Speed: '             + position.coords.speed             + '<br/>' +
+          'Timestamp: '         + position.timestamp                + '<br/>';
+
+    $('.gps-data').html(strGPS + "<br/>" + strgps);
 };
 
 // onError Callback receives a PositionError object
