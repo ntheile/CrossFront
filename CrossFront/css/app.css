@@ -1,8 +1,20 @@
-﻿body
-{
-    font-family: 'Segoe UI', sans-serif
+﻿/*desktop view*/
+@media all and  (min-width: 680px) {
+  .sidemenu {
+    float: left;
+
+  }
+
+    .main-content {
+        margin-left: 300px;
+    }
+
 }
 
-span {
-    font-style: italic
+
+/*mobile view*/
+@media all and  (max-width: 680px) {
+  .sidemenu {
+    margin: 0px 0px 0px 0px;
+  }
 }

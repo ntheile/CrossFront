@@ -601,14 +601,15 @@ Appharbor is a great free hosting service. To get my app to deploy to appharbor 
 
 1. Change all .ts file to not use the automatic TypeScript compiler, change to not compile by right clicking the file and going to properties.
 2. Comment a line of code in the CrossFront.csproj 
-```
+```xml
 <Target Name="BeforeBuild">
-   <!--<Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />-->
+   <!--<Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; 
+   @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />-->
 </Target>
 ```
 3. After that I simply logged onto AppHarbor, created a new project and hooked it into this github repo.
 
-You can view this repo here `http://crossfront.apphb.com/`
+You can view the working project here http://crossfront.apphb.com/
 
 
 Upcoming Topics and Code
