@@ -1,6 +1,6 @@
 CrossFront - Cross-Platform, Front-End Glue 
 ==========================================
-**_Write Once ()=> run on iPhone && Android && Tablets && Desktop Browsers && Mobile Browsers_**
+**_Write Once ()=> run on iPhone & Android & Tablets & Desktop Browsers & Mobile Browsers_**
 
 ![logo](https://raw.github.com/ntheile/CrossFront/master/CrossFront/images/CrossFrontLogo.png)
 

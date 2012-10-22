@@ -21,6 +21,8 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="images\CrossFrontDesktop.png" />
+    <Content Include="images\CrossFrontMobile.png" />
     <Content Include="js\libs\jquery.mobile.router-old.js" />
     <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
@@ -143,6 +145,7 @@
     <!--<Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.0.0\tsc&quot; @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />-->
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>D:\Websites\CrossFront\CrossFront\TscCompile.bat</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
