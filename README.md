@@ -621,6 +621,37 @@ Appharbor is a great free hosting service. To get my app to deploy to appharbor 
 
 You can view the working project here http://crossfront.apphb.com/
 
+Day 10 - The Mobile and Desktop Views
+======================================
+
+It's very simple to create a separate mobile and desktop view by using `CSS3 media queries. I simply change the margin size of the side menu and main-content based on the screen size.
+
+`/css/app.css`
+
+```css
+/*desktop view*/
+@media all and  (min-width: 680px) {
+  .sidemenu {
+    float: left;
+
+  }
+
+    .main-content {
+        margin-left: 300px;
+    }
+
+}
+
+
+/*mobile view*/
+@media all and  (max-width: 680px) {
+  .sidemenu {
+    margin: 0px 0px 0px 0px;
+  }
+}
+```
+
+** *Note, I removed the .bat file to auto compile the typescript files in order to deploy from github to appharbor, so simpy run the bat file manually or re-add after you clone the project.**
 
 Upcoming Topics and Code
 ===============
