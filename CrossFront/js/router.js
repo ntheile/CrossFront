@@ -123,6 +123,9 @@
                 $.mobile.changePage(hash);
             }
 
+            //TODO - use an index view here and get rid of test view code in app.ts 
+            $('sidemenu').listview( "refresh" ).trigger('create');
+
         };
 
         var init = function () {

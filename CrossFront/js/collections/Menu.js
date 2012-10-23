@@ -8,7 +8,7 @@ define(["require", "exports"], function(require, exports) {
     var Menu = (function (_super) {
         __extends(Menu, _super);
         function Menu(options) {
-            this.url = "/api/Menu.html";
+            this.url = "api/Menu.html";
                 _super.call(this, options);
         }
         Menu.prototype.initialize = function () {

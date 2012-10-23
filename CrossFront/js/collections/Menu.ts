@@ -15,14 +15,20 @@ export class Menu extends Backbone.Collection {
     
     url: string;
         
+
+
     initialize() {
         console.log("Menu init'd");
+
     }
+
+    
 
     // You can pass anything in when this is new'd up 
     constructor(options?: any) {
         // This code runs when you create a new instance of Menu
-        this.url = "/api/Menu.html";    
+        this.url = "api/Menu.html";    
+        
         super(options);  
     };
 };

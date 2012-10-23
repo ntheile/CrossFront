@@ -8,7 +8,7 @@
 //1. media queries for desktop and mobile views
 
 require.config({
-    urlArgs: "bust=v33",
+    urlArgs: "bust=v34",
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
@@ -49,6 +49,7 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
         global._ = global._ || _;
         global.Backbone = global.Backbone || Backbone;
         console.log('core libs loaded');
+        $.support.cors = true;
 
 
         //wait for Mobile jquery mobile init'd and loaded Callback

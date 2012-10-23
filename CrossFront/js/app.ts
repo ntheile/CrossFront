@@ -63,7 +63,7 @@ menu.fetch({success: function(){
     console.log(menu.models); // => 2 (collection have been populated)
 
     // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
-   var menuview = new PartialView.MenuView(  $('.sidemenu'), menu  ).render();
+   var menuview = new PartialView.MenuView(  $('.sidemenu'), menu  ).render().trigger('create');
 }})
 
 

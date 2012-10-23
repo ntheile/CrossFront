@@ -21,6 +21,7 @@ export class IndexView extends Backbone.View {
          
     render() {
         console.log("rendered the index view");
+
     }
 
 };
