@@ -74,7 +74,7 @@
     ], function ($, _, Backbone) {
 
         App.IndexPage = function (type, match, ui) {
-
+            
             //var indexPage = new indexView();
             console.log("-----------Index Page fired-------");
 
@@ -106,6 +106,7 @@
         };
 
         App.PageInit = function (type, match, ui, page) {
+
             console.log("This page (" + $(page).jqmData("url") + ") has been initialized");
 
             //jquery mobile router bookmark deep linking hack for non-IE browsers (/index.html#one?q=1)

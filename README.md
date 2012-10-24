@@ -11,7 +11,7 @@ View a demo CrossFront app here http://crossfront.apphb.com/
 
 What is CrossFront?
 ===================
-CrossFront uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
+CrossFront is an `HTML5` application written by Nick Theile that uses these frameworks: `TypeScript` `Backbone` `Underscore` `Require`
 `jQuery` `jQuery Mobile` `jQuery Mobile Router` 
 `Cordova (PhoneGap)` `Modernizr`
 	
@@ -624,7 +624,7 @@ You can view the working project here http://crossfront.apphb.com/
 Day 10 - The Mobile and Desktop Views
 ======================================
 
-It's very simple to create a separate mobile and desktop view by using `CSS3 media queries. I simply change the margin size of the side menu and main-content based on the screen size.
+It's very simple to create a separate mobile and desktop view by using `CSS3 media queries`. I simply change the margin size of the side menu and main-content based on the screen size.
 
 `/css/app.css`
 

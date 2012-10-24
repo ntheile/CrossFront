@@ -8,7 +8,7 @@
 //1. media queries for desktop and mobile views
 
 require.config({
-    urlArgs: "bust=v34",
+    urlArgs: "bust=v35",
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
