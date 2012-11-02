@@ -23,6 +23,12 @@
   <ItemGroup>
     <Content Include="images\CrossFrontDesktop.png" />
     <Content Include="images\CrossFrontMobile.png" />
+    <Content Include="js\app.min.js">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="js\collections\Menu.min.js">
+      <DependentUpon>Menu.ts</DependentUpon>
+    </Content>
     <Content Include="js\libs\jquery.mobile.router-old.js" />
     <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
@@ -51,6 +57,9 @@
     <Content Include="js\libs\jquery.mobile.routerlite.js" />
     <Content Include="js\libs\modernizr.js" />
     <Content Include="js\libs\require.js" />
+    <Content Include="js\libs\test.min.js">
+      <DependentUpon>test.ts</DependentUpon>
+    </Content>
     <Content Include="js\libs\text.js" />
     <Content Include="js\libs\underscore-1.3.0.js" />
     <Content Include="js\libs\jquery.mobile.router.js" />
@@ -60,7 +69,13 @@
     <Content Include="js\models\MenuItem.js">
       <DependentUpon>MenuItem.ts</DependentUpon>
     </Content>
+    <Content Include="js\models\MenuItem.min.js">
+      <DependentUpon>MenuItem.ts</DependentUpon>
+    </Content>
     <Content Include="js\models\Todo.js">
+      <DependentUpon>Todo.ts</DependentUpon>
+    </Content>
+    <Content Include="js\models\Todo.min.js">
       <DependentUpon>Todo.ts</DependentUpon>
     </Content>
     <Content Include="js\router.js" />
@@ -73,15 +88,27 @@
     <Content Include="js\utils\Utils.js">
       <DependentUpon>Utils.ts</DependentUpon>
     </Content>
+    <Content Include="js\utils\Utils.min.js">
+      <DependentUpon>Utils.ts</DependentUpon>
+    </Content>
     <Content Include="js\views\pages\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
     <None Include="js\views\partials\Menu.ts" />
     <None Include="js\views\pages\One.ts" />
+    <Content Include="js\views\pages\index.min.js">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
     <Content Include="js\views\pages\One.js">
       <DependentUpon>One.ts</DependentUpon>
     </Content>
+    <Content Include="js\views\pages\One.min.js">
+      <DependentUpon>One.ts</DependentUpon>
+    </Content>
     <Content Include="js\views\partials\Menu.js">
+      <DependentUpon>Menu.ts</DependentUpon>
+    </Content>
+    <Content Include="js\views\partials\Menu.min.js">
       <DependentUpon>Menu.ts</DependentUpon>
     </Content>
     <Content Include="templates\pages\Index.html" />

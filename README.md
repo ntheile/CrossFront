@@ -124,6 +124,9 @@ Here are some of my resources:
 
 Day 2 - The Build Script
 =====================================
+**__* Note that this build script is no longer needed with the web essentails 2012 visual studio extension installed. There is 
+an option to enable typescript AMD compilation on save. http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6__**
+
 I found it a pain to maually compile each ts file to use AMD so I wrote this batch script that you can configure to run at build time.
  
 `/TscCompile.bat`

@@ -23,9 +23,8 @@ export class Todo extends Backbone.Model  {
     validate(attrs : TodoInterface) {
        
        if (_.isEmpty(attrs.content)) {
-            return "Content is required.";
+            return "Content is required."; 
        }
-       
        return "";
     };
 
@@ -33,7 +32,7 @@ export class Todo extends Backbone.Model  {
 
 };
 
-//put all the default values here, it will make intellisense work nicely
+//put all the default values here, it will make intellisense work nicely 
 interface TodoInterface {
-    content: string;     
+    content: string;      
 };

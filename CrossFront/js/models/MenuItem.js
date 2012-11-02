@@ -4,22 +4,26 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 }
 define(["require", "exports"], function(require, exports) {
+    // Our basic MenuItem model has text, url, and acitve params
     var MenuItem = (function (_super) {
         __extends(MenuItem, _super);
         function MenuItem() {
             _super.apply(this, arguments);
 
         }
-        MenuItem.prototype.defaults = function () {
+        MenuItem.prototype.defaults = // Defaults
+        function () {
             return {
                 text: 'google',
                 url: 'www.google.com',
                 active: false
             };
-        };
+        }// Initialize
+        ;
         MenuItem.prototype.initialize = function () {
             console.log("MenuItem Model init'ed.");
-        };
+        }// Validate
+        ;
         MenuItem.prototype.validate = function (attrs) {
             if(_.isEmpty(attrs.text)) {
                 return "text is required.";
@@ -28,7 +32,9 @@ define(["require", "exports"], function(require, exports) {
                 return "url is required.";
             }
             return "";
-        };
+        }// Methods
+        // Toggle the `active` state of this MenuItem.
+        ;
         MenuItem.prototype.toggleActive = function () {
             var active = this.get('active');
             if(active == true) {

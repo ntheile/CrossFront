@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
 }
 define(["require", "exports"], function(require, exports) {
     
+    // simple view in the grid list of a contact
     var IndexView = (function (_super) {
         __extends(IndexView, _super);
         function IndexView() {
