@@ -8,7 +8,7 @@ if (!App) var App = {};
 
 
 //TODO - should find a better way to do this
-if (document.domain == "crossplatform.apphb.com") {
+if (document.domain == "crossfront.apphb.com") {
     App.rootUrl = "";
 }
 else {
