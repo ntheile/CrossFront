@@ -6,6 +6,8 @@
 //global variables
 if (!App) var App = {};
 
+
+//TODO - should find a better way to do this
 if (document.domain == "crossplatform.apphb.com") {
     App.rootUrl = "";
 }
@@ -14,9 +16,13 @@ else {
 }
 
 //console hack for IE
-if (typeof console == "undefined") {
-    this.console = { log: function () { } };
+try{
+    console.log();
 }
+catch (err){
+    var console;
+}
+
 
 //is this a mobile phone???
 App.userAgent = navigator.userAgent + '';
@@ -32,3 +38,7 @@ else {
     document.write('<script src="js/libs/cordova-2.0.0.js"></sc' + 'ript>');
     App.mobile_system = '';
 }
+
+
+
+

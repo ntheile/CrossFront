@@ -656,11 +656,88 @@ It's very simple to create a separate mobile and desktop view by using `CSS3 med
 
 ** *Note, I removed the .bat file to auto compile the typescript files in order to deploy from github to appharbor, so simpy run the bat file manually or re-add after you clone the project.**
 
+
+
+Day 11 - Added polyfills for IE and other Browsers
+===================================================
+Many of the browsers handle loading the router differently so I had to write a few polyfills to fix that problem.
+
+`to fix IE routing`
+
+```javascript```
+                if ($.browser.msie) {
+                    //start your apps router
+
+                    Router.init();
+
+                    ////jquery mobile router bookmark deep linking hack for bookmarking
+                    if ('' !== window.location.hash && '#' !== window.location.hash) {
+                        //hash found
+                        var hash = window.location.hash;
+                        //is there a query string in there ?
+                        if ((hash.indexOf("?") !== -1)) {
+                            hash = hash + "?bookmark";
+                        }
+                        else {
+                            hash = hash + "?bookmark";
+                        }
+
+                        $.mobile.changePage(hash);
+                    }
+
+
+
+                    //now that all your prerequisites are loaded...start your app
+                    require(['app']);
+                    //since the router doesnt work good in IE call the first route manually
+                    App.IndexPage();
+                    console.log('app started');
+                    
+                }
+                else { //start app normally for other browsers
+                    
+                    Router.init();
+
+                   
+                    require(['app']);
+                    console.log('app started');
+
+                }
+				
+				
+				...
+				
+				
+				App.PageInit = function (type, match, ui, page) {
+				
+				console.log("This page (" + $(page).jqmData("url") + ") has been initialized");
+
+				////jquery mobile router bookmark deep linking hack for non-IE browsers (/index.html#one?q=1)
+				if ('' !== window.location.hash && '#' !== window.location.hash && $.browser.msie != true) {
+					//hash found
+					var hash = window.location.hash;
+					//is there a query string in there ?
+					if ((hash.indexOf("?") !== -1)) {
+						hash = hash + "?bookmark";
+					}
+					else {
+						hash = hash + "?bookmark";
+					}
+
+					$.mobile.changePage(hash);
+				}
+			};
+```
+
+
+TODO - look into a Device detection and script loader...
+
+
 Upcoming Topics and Code
 ===============
-* CSS3 Media Queries (MobileView, TabletView, DesktopView), maybe look into a device detector/loader, such as Lumbar http://walmartlabs.github.com/lumbar/ ...proly use http://blog.squirro.com/post/26967754862/writing-a-responsive-application-with-backbone-js
+* Look into a device detector/loader, such as Lumbar http://walmartlabs.github.com/lumbar/ ...proly use http://blog.squirro.com/post/26967754862/writing-a-responsive-application-with-backbone-js
 * Integrate with PhoneGap
 * Build and deploy to an Android Phone
-* Use native capabilties (GPS)
-* Set up routers like in this project https://github.com/jcreamer898/RequireJS-Backbone-Starter/blob/master/js/routers/home.js 
-* Look into r.js to minify modular code into a gzipped minified single file
+* Test native capabilties (GPS) and multiple phones
+* Maybe set up routers like in this project https://github.com/jcreamer898/RequireJS-Backbone-Starter/blob/master/js/routers/home.js 
+

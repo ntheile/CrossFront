@@ -1,5 +1,6 @@
 ﻿/// <reference path="views/pages/One"/>
 /// <reference path="views/pages/Two"/>
+/// <reference path="views/pages/index"/>
 
     define([
       'jquery',
@@ -8,24 +9,37 @@
     ], function ($, _, Backbone) {
 
         App.IndexPage = function (type, match, ui) {
-            
+           
+
             //var indexPage = new indexView();
             console.log("-----------Index Page fired-------");
+			//TODO - use an index view here and get rid of test view code in app.ts 
+            $('.navmenu').listview("refresh").trigger('create');
+
+            //get index page and Render it.
+            require(['views/pages/index'], function (__PageView__) {
+                var PageView = __PageView__;
+
+                var IndexPage = new PageView.IndexView();
+                IndexPage.render();
+
+            });
+
 
         };
 
         App.PageOne = function (type, match, ui) {
 
             //var onePage = new pageOneView();
-
-
             console.log("-----------one page fired------------");
 
             //get the Page One View and Render it.
             require(['views/pages/One'], function (__PageView__) {
                 var PageView = __PageView__;
 
-                var PageOne = new PageView.PageOne($('#one :jqmData(role="content")')).render();
+                var PageOne = new PageView.PageOne($('#one :jqmData(role="content")'));
+                
+                PageOne.render();
 
             });
 
@@ -41,10 +55,11 @@
 
         App.PageInit = function (type, match, ui, page) {
 
+
             console.log("This page (" + $(page).jqmData("url") + ") has been initialized");
 
-            //jquery mobile router bookmark deep linking hack for non-IE browsers (/index.html#one?q=1)
-            if ('' !== window.location.hash && '#' !== window.location.hash && !$.browser.msie) {
+            ////jquery mobile router bookmark deep linking hack for non-IE browsers (/index.html#one?q=1)
+            if ('' !== window.location.hash && '#' !== window.location.hash && $.browser.msie != true) {
                 //hash found
                 var hash = window.location.hash;
                 //is there a query string in there ?
@@ -58,15 +73,19 @@
                 $.mobile.changePage(hash);
             }
 
-            //TODO - use an index view here and get rid of test view code in app.ts 
-            $('sidemenu').listview( "refresh" ).trigger('create');
 
+
+        };
+
+
+        App.DefaultHandler = function () {
+            alert('no routes found');
         };
 
         var init = function () {
             App.Router = new $.mobile.Router(
                 {
-                    "#index": {
+                    "#index(?:[?](.*))?": {
                         handler: App.IndexPage, events: "bs"
                     },
                     "#one(?:[?](.*))?": {

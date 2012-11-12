@@ -26,6 +26,8 @@ export class PageOne extends Backbone.View {
         /// get the page template widget ///
         ///
         $el = this.el;
+
+
         
         //grab the template and inject the json data into the DOM element, pass back to self variable so we can return it for chaining.
         var tmpl = require(["text!../../../templates/pages/One.html!strip" ],
@@ -38,13 +40,13 @@ export class PageOne extends Backbone.View {
                 ).trigger('create');
 
 
-                return this; 
+                //return this; 
 
             }
         )
 
         //return tmpl for chainable calls, like .render().el
-        return tmpl;
+        //return tmpl;
 
         ///
         /// get the menu widget ///
@@ -54,7 +56,7 @@ export class PageOne extends Backbone.View {
 
         //$(this.el).html("<h2>Welcome to Page One</h2>");
 
-        //return this;
+        // /return this;
 
     }
 

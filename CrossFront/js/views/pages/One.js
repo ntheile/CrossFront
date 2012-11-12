@@ -28,16 +28,16 @@ define(["require", "exports"], function(require, exports) {
             ], function (html) {
                 var compiled_template = _.template(html);
                 $el.html(compiled_template()).trigger('create');
-                return this;
-            });
+                //return this;
+                            });
             //return tmpl for chainable calls, like .render().el
-            return tmpl;
+            //return tmpl;
             ///
             /// get the menu widget ///
             ///
             console.log("completed page one render");
             //$(this.el).html("<h2>Welcome to Page One</h2>");
-            //return this;
+            // /return this;
                     };
         return PageOne;
     })(Backbone.View);

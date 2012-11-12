@@ -1,0 +1,11 @@
+﻿CrossFront to do list
+
+1. Separate out side-content and main-content better and use templates for all views
+
+Browser Test Senerios
+
+1. refresh button,  cntrl + shift + r , url bar enter
+2. click a hash link
+3. bookmarking with hash link
+4. bookmarking with hash link and query string
+5. close and try again in same browser to test caching

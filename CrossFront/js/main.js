@@ -1,14 +1,5 @@
-/*
-    Put only required initilization code here and start the app and load libraries.
-    This file should be able to be re-used as a boilerplate for most apps.
-*/
-
-
-//todo
-//1. media queries for desktop and mobile views
-
 require.config({
-    urlArgs: "bust=v35",
+    urlArgs: "bust=v45",
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
@@ -18,7 +9,8 @@ require.config({
         jqmr: 'libs/jquery.mobile.router',
         app: 'app',
         cordova: 'libs/cordova-2.0.0',
-        modernizr: 'libs/modernizr'
+        modernizr: 'libs/modernizr',
+        router: 'router'
     },
     shim: {
         'backbone': {
@@ -66,8 +58,8 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
         });
 
         //load jquery mobile
-        require(['jqm', 'jqmr', 'text'],
-            function ($$,jqmr, text) {
+        require(['jqm', 'router', 'jqmr', 'text'],
+            function ($$, Router, jqmr, text) {
                 console.log("start your engines");
 
                 // in order to prevent viewing unstyled content before all out libraries are loaded
@@ -75,50 +67,51 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
                 $('#preLoad').hide();
 
                 ///
-                /// Start Router ///
+                /// Start Router 
+                /// With an IE Hack for jquery mobile router bookmark deep linking to work, for example /index.html#one?q=1
                 ///
+                
 
-                // IE Hack for jquery mobile router bookmark deep linking to work, for example /index.html#one?q=1
                 if ($.browser.msie) {
                     //start your apps router
-                    require(['router'], function (Router) {
 
-                        Router.init();
+                    Router.init();
 
-                        if ('' !== window.location.hash && '#' !== window.location.hash) {
-                            //hash found
-                            var hash = window.location.hash;
-                            //is there a query string in there ?
-                            if ((hash.indexOf("?") !== -1)) {
-                                hash = hash + "?bookmark";
-                            }
-                            else {
-                                hash = hash + "?bookmark";
-                            }
-
-                            $.mobile.changePage(hash);
+                    ////jquery mobile router bookmark deep linking hack for bookmarking
+                    if ('' !== window.location.hash && '#' !== window.location.hash) {
+                        //hash found
+                        var hash = window.location.hash;
+                        //is there a query string in there ?
+                        if ((hash.indexOf("?") !== -1)) {
+                            hash = hash + "?bookmark";
+                        }
+                        else {
+                            hash = hash + "?bookmark";
                         }
 
+                        $.mobile.changePage(hash);
+                    }
 
 
-                        //now that all your prerequisites are loaded...start your app
-                        require(['app']);
-                        console.log('app started');
-                    });
+
+                    //now that all your prerequisites are loaded...start your app
+                    require(['app']);
+                    //since the router doesnt work good in IE call the first route manually
+                    App.IndexPage();
+                    console.log('app started');
+                    
                 }
                 else { //start app normally for other browsers
-                    require(['router'],function (Router) {
-                        Router.init();
-                    });
+                    
+                    Router.init();
+
+                   
                     require(['app']);
                     console.log('app started');
 
                 }
 
-               
-                
-                });
-        
-        
+
+        });
 
     });
