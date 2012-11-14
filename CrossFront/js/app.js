@@ -1,14 +1,4 @@
 // most of the code goes in a view and that code is triggered by the router
-//get index page and Render it, this works for android, maybe i should target devices for this
-$('.navmenu').listview("refresh").trigger('create');
-//get index page and Render it.
-require([
-    'views/pages/index'
-], function (__PageView__) {
-    var PageView = __PageView__;
-    var IndexPage = new PageView.IndexView();
-    IndexPage.render();
-});
 ////
 //// PhoneGap GPS Test ////////////////////////////////////////////////////////////////////////
 ////

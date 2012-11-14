@@ -16,7 +16,8 @@ define(["require", "exports"], function(require, exports) {
             return {
                 text: 'google',
                 url: 'www.google.com',
-                active: false
+                active: false,
+                id: 1
             };
         }// Initialize
         ;

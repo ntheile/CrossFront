@@ -22,13 +22,28 @@ export class Menu extends Backbone.Collection {
 
     }
 
+    sync(method, model, options) {
+        var params = _.extend({
+            type: 'GET',
+            dataType: 'jsonp',
+            url: this.url,
+            processData: false
+        }, options);
+
+        return $.ajax(params);
+    }
+
+    //parse(response){
+    //   return response.Todos
+    //}
+
     
 
     // You can pass anything in when this is new'd up 
     constructor(options?: any) {
         // This code runs when you create a new instance of Menu
-        this.url = "api/Menu.html";    
-        
+        //this.url = "api/Menu.html";    
+        this.url = "http://crossfront-backend.apphb.com/api/Menu"
         super(options);  
     };
 };

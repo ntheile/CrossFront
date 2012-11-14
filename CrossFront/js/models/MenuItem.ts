@@ -14,7 +14,8 @@ export class MenuItem extends Backbone.Model {
         return {
             text: 'google',
             url: 'www.google.com',
-            active: false
+            active: false,
+            id: 1
         };
     }
     
@@ -57,4 +58,5 @@ interface MenuItemInterface {
     text: string; 
     url: string;    
     active?: bool;
+    
 };

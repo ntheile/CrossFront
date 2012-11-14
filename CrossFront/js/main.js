@@ -3,7 +3,7 @@ require.config({
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
-        underscore: 'libs/underscore-1.3.0',
+        underscore: 'libs/underscore-1.4.2',
         jquery: 'http://code.jquery.com/jquery-1.8.2.min',
         jqm: 'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min',
         jqmr: 'libs/jquery.mobile.router',
@@ -42,7 +42,6 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
         global.Backbone = global.Backbone || Backbone;
         console.log('core libs loaded');
         $.support.cors = true;
-
 
         //wait for Mobile jquery mobile init'd and loaded Callback
         $(document).bind("mobileinit", function () {
@@ -111,6 +110,28 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
 
                 }
 
+                //http://localhost:2117/api/values
+
+                //http://localhost:12343/api/users
+
+                //$.ajax({
+                //    url: "http://localhost:2117/api/Menu",
+                //    dataType: "jsonp"
+                //})
+                //.done(function (data) {
+                //    console.log("%%%%%%%%%%%done");
+                //    console.log(data);
+                        
+                    
+
+                //})
+                //.fail(function (jqXHR, textStatus, err) {
+                //    console.log("%%%%%%%%%%%fail");
+                //    console.log(err);
+                //})
+                //.always(function () {
+
+                //});
 
         });
 
