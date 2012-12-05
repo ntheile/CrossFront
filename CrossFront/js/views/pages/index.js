@@ -44,3 +44,4 @@ define(["require", "exports", "collections/Menu", "views/partials/Menu"], functi
     ; ;
 })
 
+//@ sourceMappingURL=index.js.map

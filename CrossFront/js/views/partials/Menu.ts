@@ -24,15 +24,17 @@ export class MenuView extends Backbone.View {
         console.log("Menu partial view init.");
 
         var that = this;
-
+        
         //grab the template (we must do this in init and not in render to avoid issues)
         Utils.Utils.Load('partials/menu', function (tmpl) {
             that.template = _.template(tmpl);
             that.render();
         });
-
-       //this.template = _.template('<ul class="navmenu" data-role="listview"><% _.each( results, function( item, i ){ %><li><a href="<%= item.get("url") %>" target="_blank"><%= item.get("text") %></a></li> <% }); %></ul>');
         
+       
+
+       //this.template = _.template('poo<ul class="navmenu" data-role="listview"><% _.each( results, function( item, i ){ %><li><a href="<%= item.get("url") %>" target="_blank"><%= item.get("text") %></a></li> <% }); %></ul>');
+     
     }
 
     render() {
@@ -47,6 +49,8 @@ export class MenuView extends Backbone.View {
         var html = this.template({
             results: coll.models 
         });
+
+        $el.html(html).trigger('create');
 
         $el.html(html).trigger('create');
 

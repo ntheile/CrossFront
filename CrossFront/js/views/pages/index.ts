@@ -36,7 +36,7 @@ export class IndexView extends Backbone.View {
 
             // Fetches, Sets up and injects a side menu partial view into the DOM for the sidemenu class
            //var menuview = new PartialView.MenuView(  $('.sidemenu'), menu  ).render();
-          var menuview = new PartialView.MenuView(  $('.sidemenu'), menu  );
+          var menuview = new PartialView.MenuView($('.sidemenu'),menu);
 
         }})
 

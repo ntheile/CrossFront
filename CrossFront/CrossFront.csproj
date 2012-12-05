@@ -40,6 +40,30 @@
     </Content>
     <Content Include="js\libs\jquery.mobile.d.ts" />
     <Content Include="js\libs\jquery.mobile.router-old.js" />
+    <Content Include="js\app.js.map">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="js\utils\Utils.js.map">
+      <DependentUpon>Utils.ts</DependentUpon>
+    </Content>
+    <Content Include="js\views\pages\index.js.map">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
+    <Content Include="js\views\partials\Menu.js.map">
+      <DependentUpon>Menu.ts</DependentUpon>
+    </Content>
+    <Content Include="js\collections\Menu.js.map">
+      <DependentUpon>Menu.ts</DependentUpon>
+    </Content>
+    <Content Include="js\models\MenuItem.js.map">
+      <DependentUpon>MenuItem.ts</DependentUpon>
+    </Content>
+    <Content Include="js\views\pages\One.js.map">
+      <DependentUpon>One.ts</DependentUpon>
+    </Content>
+    <Content Include="js\models\Todo.js.map">
+      <DependentUpon>Todo.ts</DependentUpon>
+    </Content>
     <None Include="TscCompile.bat" />
     <Content Include="css\app.css" />
     <Content Include="images\CrossFrontLogo.png" />

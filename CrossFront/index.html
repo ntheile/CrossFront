@@ -4,10 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta http-equiv="X-UA-Compatible" />
+    <meta name="google-translate-customization" content="ba0be1debc2b1758-85c98d3745e8d577-g024ac122bee9aba1-14"></meta>
     <title>TypeScript Backbone Require jQuery Mobile Router - HTML Boilerplate App </title>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <link href="css/app.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <!--<script src="http://192.168.1.103:8080/target/target-script-min.js#anonymous"></script>-->
+    <script src="js/appstart/config.js"></script>
+    <script data-main="js/main" src="js/libs/require.js?v=10"></script>
+    
 </head>
 <body>
 
@@ -15,31 +20,50 @@
         <h1>loading... </h1>
     </div>
 
-
     <div id="loaded" style="display: none">
         
         <div id="index" data-role="page" data-dom-cache="false">
             
             <div data-role="header" data-tap-toggle="false" data-position="fixed">
                 <h1>Index Page</h1>
+                
             </div>
 
             <div data-role="content">
-                
                 
                 <center>
                     <img src="images/CrossFrontLogo.png" />
                 </center>
                 
                 <p>
+                    <p>
+                        <div id="google_translate_element"></div><script type="text/javascript">
+                                                                     function googleTranslateElementInit() {
+                                                                         new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                                                                     }
+                        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+                    </p>
                     <div class="sidemenu"></div>
                 </p>
 
                 <p>
                     <div class="main-content">
                         <div class="gps-data"></div>
+
+                         <p>
+                            This a test to see how well bing translate works. 
+                            If you choose to display the widget then any visitor to your site can invoke translation by clicking it (manual). 
+                            In addition you may choose to have the translation toolbar appear to visitors whose browser language is different 
+                            than your site language and offer to translate the page (notify) or to do so automatically (auto), 
+                            in which case displaying the widget is optional. 
+                        </p>
+
                     </div>
                 </p>
+              
+        
+               
 
             </div>
 
@@ -90,11 +114,6 @@
 
     </div>
 
-
-   
-    <script src="js/appstart/config.js"></script>
-    <script data-main="js/main" src="js/libs/require.js?v=10"></script>
-    
     
 </body>
 </html>

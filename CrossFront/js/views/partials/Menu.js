@@ -24,7 +24,7 @@ define(["require", "exports", 'utils/Utils'], function(require, exports, __Utils
                 that.template = _.template(tmpl);
                 that.render();
             });
-            //this.template = _.template('<ul class="navmenu" data-role="listview"><% _.each( results, function( item, i ){ %><li><a href="<%= item.get("url") %>" target="_blank"><%= item.get("text") %></a></li> <% }); %></ul>');
+            //this.template = _.template('poo<ul class="navmenu" data-role="listview"><% _.each( results, function( item, i ){ %><li><a href="<%= item.get("url") %>" target="_blank"><%= item.get("text") %></a></li> <% }); %></ul>');
                     };
         MenuView.prototype.render = function () {
             console.log("menu partial view in render");
@@ -37,6 +37,7 @@ define(["require", "exports", 'utils/Utils'], function(require, exports, __Utils
                 results: coll.models
             });
             $el.html(html).trigger('create');
+            $el.html(html).trigger('create');
             return this;//return tmpl for chainable calls, like .render().el
             
         }// Require params to be passed in when an instance of this is created (aka new'd up)
@@ -47,3 +48,4 @@ define(["require", "exports", 'utils/Utils'], function(require, exports, __Utils
     exports.MenuView = MenuView;    
 })
 
+//@ sourceMappingURL=Menu.js.map

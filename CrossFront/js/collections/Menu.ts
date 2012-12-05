@@ -26,8 +26,7 @@ export class Menu extends Backbone.Collection {
         var params = _.extend({
             type: 'GET',
             dataType: 'jsonp',
-            url: this.url,
-            processData: false
+            url: this.url
         }, options);
 
         return $.ajax(params);

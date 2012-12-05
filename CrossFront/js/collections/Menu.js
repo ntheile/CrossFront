@@ -21,8 +21,7 @@ define(["require", "exports"], function(require, exports) {
             var params = _.extend({
                 type: 'GET',
                 dataType: 'jsonp',
-                url: this.url,
-                processData: false
+                url: this.url
             }, options);
             return $.ajax(params);
         }//parse(response){
@@ -36,3 +35,4 @@ define(["require", "exports"], function(require, exports) {
     ; ;
 })
 
+//@ sourceMappingURL=Menu.js.map

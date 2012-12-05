@@ -1,9 +1,9 @@
 require.config({
-    urlArgs: "bust=v45",
+    urlArgs: "",
     paths: {
         backbone: 'libs/backbone-0.5.3',
         text: 'libs/text',
-        underscore: 'libs/underscore-1.4.2',
+        underscore: 'libs/underscore-1.3.0',
         jquery: 'http://code.jquery.com/jquery-1.8.2.min',
         jqm: 'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min',
         jqmr: 'libs/jquery.mobile.router',
@@ -16,7 +16,7 @@ require.config({
         'backbone': {
             //These script dependencies should be loaded before loading
             //backbone.js
-            deps: ['jquery', 'underscore' ],
+            deps: ['jquery', 'underscore', 'cordova'],
             //Once loaded, use the global 'Backbone' as the
             //module value.
             exports: 'Backbone'
@@ -33,8 +33,8 @@ require.config({
 });
 
 //load core libs
-require(['jquery', 'underscore', 'backbone', 'modernizr'],
-    function ($, _, Backbone, modernizr) {
+require(['jquery', 'underscore', 'backbone', 'modernizr', 'cordova'],
+    function ($, _, Backbone, modernizr, cordova) {
 
         // Exposing globals just in case that we are switching to AMD version of the lib later
         var global = this;
@@ -43,15 +43,20 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
         console.log('core libs loaded');
         $.support.cors = true;
 
+
+     
         //wait for Mobile jquery mobile init'd and loaded Callback
         $(document).bind("mobileinit", function () {
+
+            $.mobile.allowCrossDomainPages = true;
 
             //config transitions
             if (navigator.userAgent.indexOf("Android") != -1) {
                 $.mobile.defaultPageTransition = 'fade';
+                $.mobile.phonegapNavigationEnabled = true;
             }
             else {
-               $.mobile.defaultPageTransition = 'none';
+                $.mobile.defaultPageTransition = 'none';
             }
 
         });
@@ -69,7 +74,7 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
                 /// Start Router 
                 /// With an IE Hack for jquery mobile router bookmark deep linking to work, for example /index.html#one?q=1
                 ///
-                
+
 
                 if ($.browser.msie) {
                     //start your apps router
@@ -98,32 +103,30 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
                     //since the router doesnt work good in IE call the first route manually
                     App.IndexPage();
                     console.log('app started');
-                    
+
                 }
                 else { //start app normally for other browsers
-                    
+
                     Router.init();
 
-                   
+
                     require(['app']);
                     console.log('app started');
 
                 }
 
+
+                ////test an api call
                 //http://localhost:2117/api/values
-
                 //http://localhost:12343/api/users
-
                 //$.ajax({
-                //    url: "http://localhost:2117/api/Menu",
+                //    url: "http://crossfront-backend.apphb.com/api/menu/",
                 //    dataType: "jsonp"
                 //})
                 //.done(function (data) {
                 //    console.log("%%%%%%%%%%%done");
                 //    console.log(data);
-                        
-                    
-
+                //    alert(data);
                 //})
                 //.fail(function (jqXHR, textStatus, err) {
                 //    console.log("%%%%%%%%%%%fail");
@@ -133,6 +136,8 @@ require(['jquery', 'underscore', 'backbone', 'modernizr'],
 
                 //});
 
-        });
+            });
+  
 
     });
+
